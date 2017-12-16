@@ -1,63 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'
+
+import UserOutput from './UserOutput/UserOutput'
+import UserInput from './UserInput/UserInput'
 
 class App extends Component {
   state = {
-    persons: [
-      { name: 'Anderson', age: 19 },
-      { name: 'Max', age: 28 },
-      { name: 'Stephani', age: 26 },
-    ]
+    username: 'Anderson'
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        { name: newName, age: 19 },
-        { name: 'Max', age: 28 },
-        { name: 'Stephani', age: 26 },
-      ]
-    })
-  }
-
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Anderson', age: 19 },
-        { name: event.target.value, age: 28 },
-        { name: 'Stephani', age: 26 },
-      ]
-    })
+  usernameHandler = (event) => {
+    this.setState({username: event.target.value})
   }
 
   render() {
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
-
     return (
       <div className="App">
-        <h1>Hi, I'm a React App!</h1>
-        <p>This is really working.</p>
-        <button
-          style={style}
-          onClick={this.switchNameHandler.bind(this, 'Ander!!')}>Switch Name</button>
-        <Person 
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this, 'Ander!')}/>
-        <Person
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          changed={this.nameChangedHandler}/>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}/>
+        <UserInput
+          changed={this.usernameHandler}
+          username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
+        <UserOutput username={this.state.username}/>
       </div>
     );
   }
