@@ -49,7 +49,11 @@ class App extends Component {
       boxShadow: '0 2px 3px #ccc',
       padding: '8px',
       cursor: 'pointer',
-      outline: 'none'
+      outline: 'none',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null
@@ -69,6 +73,7 @@ class App extends Component {
       )
 
       style.backgroundColor = 'red'
+      style[':hover'].backgroundColor = 'salmon'
     }
 
     const classes = []
