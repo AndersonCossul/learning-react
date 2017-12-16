@@ -14,18 +14,23 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        { id: 0, name: newName, age: 28 },
-        { id: 1, name: 'Manu', age: 29 },
-        { id: 2, name: 'Stephanie', age: 27 }
-      ]
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id
     })
+  
+    // working with a copy, not reference
+    const person = {...this.state.persons[personIndex]}
+    person.name = event.target.value
+
+    const persons = [...this.state.persons]
+    persons[personIndex] = person
+
+    this.setState( {persons: persons} )
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = [...this.state.persons] // make a copy, not reference
+    const persons = [...this.state.persons]
     persons.splice(personIndex, 1)
     this.setState({persons: persons})
   }
@@ -55,6 +60,7 @@ class App extends Component {
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
+              changed={(event) => this.nameChangedHandler(event, person.id)}
               key={person.id}/>
           })}
         </div>

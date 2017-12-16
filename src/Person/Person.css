@@ -6,3 +6,7 @@
   padding: 16px;
   text-align: center;
 }
+
+.Person p {
+  cursor: not-allowed;
+}
